@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: int_sessions
+    description: >
+      One row per derived session using a 30-minute inactivity rule.
+
+    columns:
+      - name: session_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: visitor_id
+        data_tests:
+          - not_null
+
+      - name: session_number
+        data_tests:
+          - not_null
+
+      - name: session_start_at_utc
+        data_tests:
+          - not_null
+
+      - name: session_end_at_utc
+        data_tests:
+          - not_null
+
+      - name: observed_duration_seconds
+        data_tests:
+          - not_null
+
+      - name: total_event_count
+        data_tests:
+          - not_null
+
+      - name: has_purchase
+        data_tests:
+          - not_null

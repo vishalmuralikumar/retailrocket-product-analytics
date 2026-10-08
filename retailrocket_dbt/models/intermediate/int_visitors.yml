@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: int_visitors
+    description: >
+      One row per observed visitor ID, combining behavioral activity
+      and order history within the dataset observation period.
+
+    columns:
+      - name: visitor_id
+        description: "Observed visitor identifier."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: first_seen_at_utc
+        description: "Earliest observed event timestamp in UTC."
+        data_tests:
+          - not_null
+
+      - name: last_seen_at_utc
+        description: "Latest observed event timestamp in UTC."
+        data_tests:
+          - not_null
+
+      - name: total_event_count
+        data_tests:
+          - not_null
+
+      - name: view_event_count
+        data_tests:
+          - not_null
+
+      - name: add_to_cart_event_count
+        data_tests:
+          - not_null
+
+      - name: purchase_event_count
+        description: "Purchase event count; does not represent quantity."
+        data_tests:
+          - not_null
+
+      - name: distinct_interacted_product_count
+        data_tests:
+          - not_null
+
+      - name: order_count
+        description: "Number of orders associated with the visitor."
+        data_tests:
+          - not_null
+
+      - name: first_order_at_utc
+        description: "First observed order timestamp; null for non-purchasers."
+
+      - name: last_order_at_utc
+        description: "Last observed order timestamp; null for non-purchasers."
+
+      - name: is_purchaser
+        description: "True when the visitor has at least one order."
+        data_tests:
+          - not_null

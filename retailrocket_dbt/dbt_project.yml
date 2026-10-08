@@ -1,0 +1,33 @@
+name: 'retailrocket_dbt'
+version: '1.0.0'
+
+profile: 'retailrocket_dbt'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  retailrocket_dbt:
+    +materialized: view
+    +schema: STAGING
+
+    example:
+      +schema: STAGING
+
+    staging:
+      +schema: STAGING
+
+    intermediate:
+      +schema: INTERMEDIATE
+
+    marts:
+      +schema: ANALYTICS
+      +materialized: table

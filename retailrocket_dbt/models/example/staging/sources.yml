@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: retailrocket
+    description: "Historical ecommerce events, product properties, and categories."
+    database: RETAILROCKET
+    schema: RAW
+
+    tables:
+      - name: events
+        identifier: EVENTS
+        description: "Customer views, add-to-cart events, and purchase events."
+
+      - name: item_properties
+        identifier: ITEM_PROPERTIES
+        description: "Product property observations from both source files."
+
+      - name: category_tree
+        identifier: CATEGORY_TREE
+        description: "Category IDs and their parent category relationships."

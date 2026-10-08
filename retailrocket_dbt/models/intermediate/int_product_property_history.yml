@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: int_product_property_history
+    description: >
+      Product category and availability history.
+      Intervals include their start and exclude their end.
+      Latest recorded values continue forward until another change.
+
+    columns:
+      - name: item_id
+        data_tests:
+          - not_null
+
+      - name: property
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['categoryid', 'available']
+
+      - name: property_value
+        data_tests:
+          - not_null
+
+      - name: valid_from_utc
+        data_tests:
+          - not_null
+
+      - name: is_latest_record
+        data_tests:
+          - not_null

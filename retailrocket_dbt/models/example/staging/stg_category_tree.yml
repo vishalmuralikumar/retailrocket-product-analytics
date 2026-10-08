@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_category_tree
+    description: "Category hierarchy with source audit metadata."
+
+    columns:
+      - name: category_id
+        description: "Unique identifier for each category."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: parent_id
+        description: "Parent category identifier; null for root categories."
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_category_tree')
+                field: category_id
+
+      - name: source_file
+        data_tests:
+          - not_null
+
+      - name: source_row_number
+        data_tests:
+          - not_null
+
+      - name: ingested_at
+        data_tests:
+          - not_null

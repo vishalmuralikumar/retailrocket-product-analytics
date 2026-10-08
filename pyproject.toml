@@ -1,0 +1,37 @@
+[project]
+name = "retailrocket-product-analytics"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "vishalmuralikumar", email = "vishalmuralikumar959@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "cryptography>=50.0.2",
+    "dbt-core>=1.12.5",
+    "dbt-snowflake>=1.12.1",
+    "ipykernel>=7.4.0",
+    "jupyterlab>=4.6.4",
+    "kaggle>=2.2.4",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.3",
+    "pandas>=3.0.6",
+    "plotly>=7.1.0",
+    "pyjwt>=2.15.1",
+    "python-dotenv>=1.2.4",
+    "requests>=2.34.2",
+    "scipy>=1.18.1",
+    "seaborn>=0.13.2",
+    "snowflake-connector-python[secure-local-storage]>=4.8.0",
+    "sqlglot>=30.21.0",
+    "statsmodels>=0.15.0",
+    "streamlit>=1.65.0",
+]
+
+[project.scripts]
+retailrocket-product-analytics = "retailrocket_product_analytics:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"

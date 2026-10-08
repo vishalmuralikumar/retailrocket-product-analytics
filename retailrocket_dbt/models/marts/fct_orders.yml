@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: >
+      One row per observed transaction ID.
+      Product and purchase event counts do not represent quantity.
+      Revenue is unavailable in this model.
+
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: visitor_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('int_visitors')
+                field: visitor_id
+
+      - name: order_time_utc
+        data_tests:
+          - not_null
+
+      - name: order_date
+        data_tests:
+          - not_null
+
+      - name: last_purchase_event_time_utc
+        data_tests:
+          - not_null
+
+      - name: purchase_event_count
+        data_tests:
+          - not_null
+
+      - name: distinct_product_count
+        data_tests:
+          - not_null

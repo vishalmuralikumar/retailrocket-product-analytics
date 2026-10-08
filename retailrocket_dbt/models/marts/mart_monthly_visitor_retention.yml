@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: mart_monthly_visitor_retention
+    description: >
+      Monthly activity retention by first-observed visitor cohort.
+      One row per cohort month and observed activity month.
+      Activity means any recorded event. Month zero is the baseline.
+      Partial observation months are flagged. First observed activity
+      does not establish a visitor's actual acquisition date.
+
+    columns:
+      - name: cohort_month
+        data_tests:
+          - not_null
+
+      - name: activity_month
+        data_tests:
+          - not_null
+
+      - name: months_since_first_seen
+        data_tests:
+          - not_null
+
+      - name: cohort_size
+        data_tests:
+          - not_null
+
+      - name: active_visitor_count
+        data_tests:
+          - not_null
+
+      - name: retention_rate
+        data_tests:
+          - not_null
+
+      - name: is_cohort_month_fully_observed
+        data_tests:
+          - not_null
+
+      - name: is_activity_month_fully_observed
+        data_tests:
+          - not_null

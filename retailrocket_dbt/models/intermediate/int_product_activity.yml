@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: int_product_activity
+    description: >
+      One row per product with observed interactions,
+      aggregated from deduplicated events.
+
+    columns:
+      - name: item_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: total_event_count
+        data_tests:
+          - not_null
+
+      - name: view_event_count
+        data_tests:
+          - not_null
+
+      - name: add_to_cart_event_count
+        data_tests:
+          - not_null
+
+      - name: purchase_event_count
+        data_tests:
+          - not_null

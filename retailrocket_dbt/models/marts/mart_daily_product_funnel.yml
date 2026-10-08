@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: mart_daily_product_funnel
+    description: >
+      Ordered view-to-cart-to-purchase funnel within the same session
+      and product. One row per UTC session start date and viewed product.
+      Rates are fractions from 0 to 1. Aggregate rates must be calculated
+      from summed stage counts rather than averaged row-level rates.
+
+    columns:
+      - name: funnel_date
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_dates')
+                field: date_day
+
+      - name: item_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: item_id
+
+      - name: viewed_session_product_count
+        data_tests:
+          - not_null
+
+      - name: cart_session_product_count
+        data_tests:
+          - not_null
+
+      - name: purchased_session_product_count
+        data_tests:
+          - not_null
+
+      - name: view_to_cart_rate
+        data_tests:
+          - not_null
+
+      - name: view_to_purchase_rate
+        data_tests:
+          - not_null
+
+      - name: cart_to_purchase_rate
+        description: >
+          Purchase-stage count divided by cart-stage count.
+          NULL when no journeys reached the cart stage.

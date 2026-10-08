@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: mart_daily_product_metrics
+    description: >
+      Daily product activity. One row per UTC event date and product
+      with observed activity. Distinct visitor, session, and order
+      counts must be recalculated for broader reporting grains.
+
+    columns:
+      - name: event_date
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_dates')
+                field: date_day
+
+      - name: item_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: item_id
+
+      - name: total_event_count
+        data_tests:
+          - not_null
+
+      - name: view_event_count
+        data_tests:
+          - not_null
+
+      - name: add_to_cart_event_count
+        data_tests:
+          - not_null
+
+      - name: purchase_event_count
+        data_tests:
+          - not_null
+
+      - name: order_count
+        data_tests:
+          - not_null

@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: int_orders
+    description: >
+      One row per transaction ID, aggregated from deduplicated
+      purchase events. Purchase event counts do not represent quantity.
+
+    columns:
+      - name: order_id
+        description: "Transaction ID identifying the order."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: visitor_id
+        description: "Visitor associated with the order."
+        data_tests:
+          - not_null
+
+      - name: order_time_utc
+        description: "Earliest purchase event timestamp for the order, in UTC."
+        data_tests:
+          - not_null
+
+      - name: last_purchase_event_time_utc
+        description: "Latest purchase event timestamp for the order, in UTC."
+        data_tests:
+          - not_null
+
+      - name: purchase_event_count
+        description: "Number of purchase event rows associated with the order."
+        data_tests:
+          - not_null
+
+      - name: distinct_product_count
+        description: "Number of distinct product IDs associated with the order."
+        data_tests:
+          - not_null

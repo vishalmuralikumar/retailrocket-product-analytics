@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_events
+    description: "Event staging view with UTC timestamps and source metadata."
+
+    columns:
+      - name: timestamp_ms
+        data_tests:
+          - not_null
+
+      - name: event_time_utc
+        data_tests:
+          - not_null
+
+      - name: visitor_id
+        data_tests:
+          - not_null
+
+      - name: event_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['view', 'addtocart', 'transaction']
+
+      - name: item_id
+        data_tests:
+          - not_null
+
+      - name: source_file
+        data_tests:
+          - not_null
+
+      - name: source_row_number
+        data_tests:
+          - not_null
+
+      - name: ingested_at
+        data_tests:
+          - not_null

@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: int_session_product_funnel
+    description: >
+      One row per viewed session-product pair.
+      Cart and purchase stages require strictly later timestamps
+      for the same product within the same session.
+
+    columns:
+      - name: session_id
+        data_tests:
+          - not_null
+
+      - name: visitor_id
+        data_tests:
+          - not_null
+
+      - name: item_id
+        data_tests:
+          - not_null
+
+      - name: first_view_at_utc
+        data_tests:
+          - not_null
+
+      - name: reached_cart
+        data_tests:
+          - not_null
+
+      - name: reached_purchase
+        data_tests:
+          - not_null

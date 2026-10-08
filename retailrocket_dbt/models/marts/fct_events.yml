@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: fct_events
+    description: >
+      One row per deduplicated behavioral event, enriched with
+      historical category and availability. Unknown attributes
+      remain null. Event IDs derive from source file and row number.
+
+    columns:
+      - name: event_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: event_time_utc
+        data_tests:
+          - not_null
+
+      - name: event_date
+        data_tests:
+          - not_null
+
+      - name: visitor_id
+        data_tests:
+          - not_null
+
+      - name: item_id
+        data_tests:
+          - not_null
+
+      - name: event_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['view', 'addtocart', 'transaction']
+
+      - name: session_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('int_sessions')
+                field: session_id
+
+      - name: order_id
+        description: "Transaction identifier; null for non-purchase events."
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('int_orders')
+                field: order_id

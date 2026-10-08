@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: dim_visitors
+    description: >
+      One row per observed visitor identifier.
+      Cohorts use the first activity recorded within this dataset,
+      which may differ from the visitor's actual acquisition date.
+
+    columns:
+      - name: visitor_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: first_seen_at_utc
+        data_tests:
+          - not_null
+
+      - name: last_seen_at_utc
+        data_tests:
+          - not_null
+
+      - name: first_seen_date
+        data_tests:
+          - not_null
+
+      - name: cohort_month
+        data_tests:
+          - not_null

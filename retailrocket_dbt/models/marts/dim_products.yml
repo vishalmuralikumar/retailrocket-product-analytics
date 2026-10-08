@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: >
+      One row per product found in events or property records.
+      Product labels are generated from IDs because names are unavailable.
+      Historical category and availability remain in event enrichment.
+
+    columns:
+      - name: item_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: product_label
+        data_tests:
+          - not_null
+
+      - name: has_observed_events
+        data_tests:
+          - not_null

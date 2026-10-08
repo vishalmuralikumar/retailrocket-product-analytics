@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: stg_item_properties
+    description: "Historical product-property observations with UTC timestamps."
+
+    columns:
+      - name: timestamp_ms
+        data_tests:
+          - not_null
+
+      - name: property_time_utc
+        data_tests:
+          - not_null
+
+      - name: item_id
+        data_tests:
+          - not_null
+
+      - name: property
+        data_tests:
+          - not_null
+
+      - name: property_value
+        data_tests:
+          - not_null
+
+      - name: source_file
+        data_tests:
+          - not_null
+
+      - name: source_row_number
+        data_tests:
+          - not_null
+
+      - name: ingested_at
+        data_tests:
+          - not_null
